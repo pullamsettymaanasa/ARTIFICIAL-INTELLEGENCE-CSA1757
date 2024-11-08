@@ -1,0 +1,26 @@
+
+JUG_A_CAPACITY = 4
+JUG_B_CAPACITY = 3
+TARGET_A = 2  
+TARGET_B = 0  
+
+a, b = 0, 0
+
+
+steps = []
+
+
+while (a != TARGET_A or b != TARGET_B):
+    if a == 0:                
+        a = JUG_A_CAPACITY
+    elif b == JUG_B_CAPACITY:   
+        b = 0
+    else:                       
+        transfer = min(a, JUG_B_CAPACITY - b)
+        a -= transfer
+        b += transfer
+    steps.append((a, b))       
+
+
+for i, (a, b) in enumerate(steps):
+    print(f"Step {i+1}: Jug A = {a}L, Jug B = {b}L")
